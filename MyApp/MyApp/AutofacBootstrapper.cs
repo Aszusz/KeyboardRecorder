@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Windows;
 using Autofac;
 using Caliburn.Micro;
+using ViewModels;
+using Views;
 
-namespace MyApp
+namespace Infrastructure
 {
     public class AutofacBootstrapper : BootstrapperBase
     {
@@ -22,8 +25,8 @@ namespace MyApp
             builder.RegisterType<WindowManager>().As<IWindowManager>().SingleInstance();
             builder.RegisterType<EventAggregator>().As<IEventAggregator>().SingleInstance();
 
-            builder.RegisterType<MainWindowViewModel>().SingleInstance();
-            builder.RegisterType<MainWindowView>().SingleInstance();
+            builder.RegisterAssemblyModules(typeof(ViewModelsAutofacModule).Assembly);
+            builder.RegisterAssemblyModules(typeof(ViewsAutofacModule).Assembly);
 
             _container = builder.Build();
         }
@@ -46,14 +49,13 @@ namespace MyApp
             DisplayRootViewFor<MainWindowViewModel>();
         }
 
-        //        typeof(ViewModule).Assembly
-        //        typeof(ViewModelModule).Assembly,
-        //    {
-        //    return new[]
-        //{
-
-        //protected override IEnumerable<Assembly> SelectAssemblies()
-        //    };
-        //}
+        protected override IEnumerable<Assembly> SelectAssemblies()
+        {
+            return new[]
+            {
+                typeof(ViewModelsAutofacModule).Assembly,
+                typeof(ViewsAutofacModule).Assembly
+            };
+        }
     }
 }

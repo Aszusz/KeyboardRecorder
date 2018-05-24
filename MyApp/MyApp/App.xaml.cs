@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace MyApp
+namespace Infrastructure
 {
     /// <summary>
     ///     Interaction logic for App.xaml

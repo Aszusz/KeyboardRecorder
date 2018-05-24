@@ -1,14 +1,14 @@
 ﻿using Caliburn.Micro;
 
-namespace MyApp
+namespace ViewModels
 {
     public class MainWindowViewModel : PropertyChangedBase
     {
         private string _title;
 
-        public MainWindowViewModel()
+        public MainWindowViewModel(string title)
         {
-            Title = "My App";
+            Title = title;
         }
 
         public string Title
