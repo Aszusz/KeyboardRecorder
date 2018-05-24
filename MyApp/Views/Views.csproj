@@ -58,7 +58,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ViewModel\ViewModels.csproj">
+    <ProjectReference Include="..\ViewModels\ViewModels.csproj">
       <Project>{EB772BFB-5687-4A38-9EC3-D3E48E722B1D}</Project>
       <Name>ViewModels</Name>
     </ProjectReference>

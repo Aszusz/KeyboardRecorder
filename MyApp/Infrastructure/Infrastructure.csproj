@@ -105,11 +105,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ViewModel\ViewModels.csproj">
+    <ProjectReference Include="..\ViewModels\ViewModels.csproj">
       <Project>{eb772bfb-5687-4a38-9ec3-d3e48e722b1d}</Project>
       <Name>ViewModels</Name>
     </ProjectReference>
-    <ProjectReference Include="..\View\Views.csproj">
+    <ProjectReference Include="..\Views\Views.csproj">
       <Project>{31f15892-4556-4fb5-8e97-1e27e3589a03}</Project>
       <Name>Views</Name>
     </ProjectReference>
