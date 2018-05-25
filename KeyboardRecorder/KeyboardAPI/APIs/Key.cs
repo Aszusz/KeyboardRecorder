@@ -126,7 +126,7 @@ namespace KeyboardAPI.APIs
         F24 = 0x87,
         NumLock = 0x90,
         ScrollLock = 0x91,
-        LShift = 0xA0,
+        LeftShift = 0xA0,
         RightShift = 0xA1,
         LeftControl = 0xA2,
         RightControl = 0xA3,

@@ -109,6 +109,10 @@
       <Project>{382BDD2E-5E86-46B8-92F8-246C6B361EF6}</Project>
       <Name>KeyboardAPI</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Recorder\Recorder.csproj">
+      <Project>{D636D345-82C9-44BE-B697-A1CADC5A2289}</Project>
+      <Name>Recorder</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ViewModels\ViewModels.csproj">
       <Project>{eb772bfb-5687-4a38-9ec3-d3e48e722b1d}</Project>
       <Name>ViewModels</Name>

@@ -4,6 +4,7 @@ using System.Reflection;
 using System.Windows;
 using Autofac;
 using Caliburn.Micro;
+using Recorder;
 using ViewModels;
 using Views;
 
@@ -27,6 +28,7 @@ namespace Infrastructure
 
             builder.RegisterAssemblyModules(typeof(ViewModelsAutofacModule).Assembly);
             builder.RegisterAssemblyModules(typeof(ViewsAutofacModule).Assembly);
+            builder.RegisterAssemblyModules(typeof(RecorderAutofacModule).Assembly);
 
             _container = builder.Build();
         }
@@ -54,7 +56,8 @@ namespace Infrastructure
             return new[]
             {
                 typeof(ViewModelsAutofacModule).Assembly,
-                typeof(ViewsAutofacModule).Assembly
+                typeof(ViewsAutofacModule).Assembly,
+                typeof(RecorderAutofacModule).Assembly
             };
         }
     }

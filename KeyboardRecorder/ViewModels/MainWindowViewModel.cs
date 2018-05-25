@@ -1,33 +1,18 @@
-﻿using System.Collections.Generic;
-using Caliburn.Micro;
-using KeyboardAPI.APIs;
+﻿using Caliburn.Micro;
+using Recorder;
 
 namespace ViewModels
 {
     public class MainWindowViewModel : PropertyChangedBase
     {
-        private readonly IKeyboard _keyboard;
+        private readonly KeyCombinationListener _keyCombinationListener;
         private string _title;
 
-        public MainWindowViewModel(string title, IKeyboard keyboard)
+        public MainWindowViewModel(string title, KeyCombinationListener keyCombinationListener)
         {
             Title = title;
-
-            _keyboard = keyboard;
-            _keyboard.Install();
-            _keyboard.Received += (sender, args) =>
-            {
-                var a = args.Key;
-            };
-
-            var expected = new List<KeyEventArgs>()
-            {
-                new KeyEventArgs(Key.KeyP, KeyAction.KeyDown),
-                new KeyEventArgs(Key.KeyP, KeyAction.KeyUp)
-            };
-
-
-            _keyboard.Send(expected);
+            _keyCombinationListener = keyCombinationListener;
+            _keyCombinationListener.Start();
         }
 
         public string Title

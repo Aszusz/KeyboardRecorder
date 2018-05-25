@@ -1,5 +1,4 @@
 ﻿using Autofac;
-using KeyboardAPI.APIs;
 
 namespace ViewModels
 {
@@ -8,10 +7,6 @@ namespace ViewModels
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<MainWindowViewModel>();
-
-            builder.RegisterType<Keyboard>()
-                .As<IKeyboard>()
-                .SingleInstance();
 
             builder.RegisterInstance("My Run Time Title");
         }
