@@ -1,21 +1,9 @@
-﻿using System.Windows;
-
-namespace Infrastructure
+﻿namespace Infrastructure
 {
     /// <summary>
     ///     Interaction logic for App.xaml
     /// </summary>
-    public partial class App : Application
+    public partial class App
     {
-        protected override void OnStartup(StartupEventArgs e)
-        {
-            base.OnStartup(e);
-            InitializeComponent();
-        }
-
-        protected override void OnExit(ExitEventArgs e)
-        {
-            base.OnExit(e);
-        }
     }
 }

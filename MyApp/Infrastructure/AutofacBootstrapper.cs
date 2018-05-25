@@ -41,7 +41,7 @@ namespace Infrastructure
         protected override IEnumerable<object> GetAllInstances(Type service)
         {
             var collectionType = typeof(IEnumerable<>).MakeGenericType(service);
-            return (IEnumerable<object>) _container.Resolve(collectionType);
+            return (IEnumerable<object>)_container.Resolve(collectionType);
         }
 
         protected override void OnStartup(object sender, StartupEventArgs e)
