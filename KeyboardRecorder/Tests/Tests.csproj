@@ -61,6 +61,12 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KeyboardAPI\KeyboardAPI.csproj">
+      <Project>{382BDD2E-5E86-46B8-92F8-246C6B361EF6}</Project>
+      <Name>KeyboardAPI</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -1,24 +1,52 @@
-﻿using NUnit.Framework;
+﻿using System.Collections.Generic;
+using System.Threading;
+using KeyboardAPI;
+using NUnit.Framework;
 
 namespace Tests
 {
     [TestFixture]
-    public class Tests
+    public class SendingKeyToKeyboardShouldFireReceivedEvent
     {
+        private IKeyboard _keyboard;
+
         [SetUp]
         public void SetUp()
         {
+            _keyboard = new Keyboard();
+            _keyboard.Install();
         }
 
         [TearDown]
         public void TearDown()
         {
+            _keyboard.Uninstall();
+            _keyboard.Dispose();
         }
 
         [Test]
         public void Test()
         {
-            Assert.Pass();
+            var expected = new List<KeyEventArgs>()
+            {
+                new KeyEventArgs(Key.P, KeyAction.KeyDown),
+                new KeyEventArgs(Key.P, KeyAction.KeyUp)
+            };
+
+            var actual = new List<KeyEventArgs>();
+
+            var cde = new CountdownEvent(2);
+
+            _keyboard.Received += (sender, args) =>
+            {
+                actual.Add(args);
+                cde.Signal();
+            };
+
+            _keyboard.Send(expected);
+
+            cde.Wait(500);
+            Assert.That(actual, Is.EquivalentTo(expected));
         }
     }
 }

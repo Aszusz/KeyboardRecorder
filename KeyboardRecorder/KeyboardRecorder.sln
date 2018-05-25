@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Views", "Views\Views.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{EE09A39C-B66C-4D1F-A6E3-4D07541B15BE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyboardAPI", "KeyboardAPI\KeyboardAPI.csproj", "{382BDD2E-5E86-46B8-92F8-246C6B361EF6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{EE09A39C-B66C-4D1F-A6E3-4D07541B15BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE09A39C-B66C-4D1F-A6E3-4D07541B15BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE09A39C-B66C-4D1F-A6E3-4D07541B15BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{382BDD2E-5E86-46B8-92F8-246C6B361EF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{382BDD2E-5E86-46B8-92F8-246C6B361EF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{382BDD2E-5E86-46B8-92F8-246C6B361EF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{382BDD2E-5E86-46B8-92F8-246C6B361EF6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -47,5 +53,6 @@ Global
 		{4C414F97-D460-473F-AF64-AA0FAD2D3713} = {8D5C5BC0-1EE6-4C23-A219-1D0B62F84D06}
 		{EB772BFB-5687-4A38-9EC3-D3E48E722B1D} = {FF89DA5A-C9DC-4508-9AB6-765DA7A8F6E9}
 		{31F15892-4556-4FB5-8E97-1E27E3589A03} = {FF89DA5A-C9DC-4508-9AB6-765DA7A8F6E9}
+		{382BDD2E-5E86-46B8-92F8-246C6B361EF6} = {1B48F1C1-C38A-4516-8D11-8FCF3A19398D}
 	EndGlobalSection
 EndGlobal
