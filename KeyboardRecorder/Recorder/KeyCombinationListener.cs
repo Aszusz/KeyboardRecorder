@@ -25,6 +25,8 @@ namespace Recorder
             GC.SuppressFinalize(this);
         }
 
+        public event Action<KeyCombination> KeyCombinationReceived;
+
         public void Start()
         {
             _keyboard.Install();
@@ -64,6 +66,14 @@ namespace Recorder
 
             if (action == KeyAction.KeyUp && RegisteredKeys.IsRegisteredKey(key))
             {
+                var combination = new KeyCombination(
+                    _isLeftShiftDown || _isRightShiftDown,
+                    _isLeftControlDown || _isRightControlDown,
+                    _isLeftAltDown,
+                    _isRightAltDown,
+                    key);
+
+                RaiseKeyCombinationReceived(combination);
             }
         }
 
@@ -73,6 +83,11 @@ namespace Recorder
             {
                 _keyboard.Received -= KeyboardOnReceived;
             }
+        }
+
+        protected virtual void RaiseKeyCombinationReceived(KeyCombination obj)
+        {
+            KeyCombinationReceived?.Invoke(obj);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Caliburn.Micro;
+﻿using System;
+using Caliburn.Micro;
 using Recorder;
 
 namespace ViewModels
@@ -12,7 +13,12 @@ namespace ViewModels
         {
             Title = title;
             _keyCombinationListener = keyCombinationListener;
+            _keyCombinationListener.KeyCombinationReceived += KeyCombinationListenerOnKeyCombinationReceived;
             _keyCombinationListener.Start();
+        }
+
+        private void KeyCombinationListenerOnKeyCombinationReceived(KeyCombination keyCombination)
+        {
         }
 
         public string Title
