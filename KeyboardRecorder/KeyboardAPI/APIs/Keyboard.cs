@@ -19,9 +19,10 @@ namespace KeyboardAPI.APIs
 
         private bool _isDisposed;
 
-        public Keyboard(IMapper mapper)
+        public Keyboard()
         {
-            _mapper = mapper;
+            _mapper = new MapperConfiguration(cfg => cfg.CreateMap<VIRTUAL_KEY_CODE, Key>())
+                .CreateMapper();
         }
 
         public event EventHandler<KeyEventArgs> Received;

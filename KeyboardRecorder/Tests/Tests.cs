@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using KeyboardAPI;
 using KeyboardAPI.APIs;
 using NUnit.Framework;
 
@@ -15,7 +14,7 @@ namespace Tests
         [SetUp]
         public void SetUp()
         {
-            _keyboard = new Keyboard(Mapping.GetConfiguredMapper());
+            _keyboard = new Keyboard();
             _keyboard.Install();
         }
 
