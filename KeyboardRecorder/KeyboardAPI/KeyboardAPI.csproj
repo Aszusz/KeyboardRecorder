@@ -41,6 +41,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IKeyboard.cs" />
+    <Compile Include="Interops\Callbacks\KeyboardHookCallback.cs" />
+    <Compile Include="Interops\Constants\WINDOW_MESSAGE.cs" />
+    <Compile Include="Interops\Enums\INPUT_TYPE.cs" />
+    <Compile Include="Interops\Enums\KEYEVENTF.cs" />
+    <Compile Include="Interops\Enums\MOUSEEVENTF.cs" />
+    <Compile Include="Interops\Enums\SCAN_CODE.cs" />
+    <Compile Include="Interops\Enums\VIRTUAL_KEY_CODE.cs" />
+    <Compile Include="Interops\Methods\GetModuleHandleInterop.cs" />
+    <Compile Include="Interops\Methods\SendInputInterop.cs" />
+    <Compile Include="Interops\Methods\WindowsHookExInterop.cs" />
+    <Compile Include="Interops\Structs\HARDWAREINPUT.cs" />
+    <Compile Include="Interops\Structs\INPUT.cs" />
+    <Compile Include="Interops\Structs\INPUT_UNION.cs" />
+    <Compile Include="Interops\Structs\KEYBDINPUT.cs" />
+    <Compile Include="Interops\Structs\MOUSEINPUT.cs" />
     <Compile Include="Key.cs" />
     <Compile Include="KeyAction.cs" />
     <Compile Include="Keyboard.cs" />

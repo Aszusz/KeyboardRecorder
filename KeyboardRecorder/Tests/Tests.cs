@@ -29,8 +29,8 @@ namespace Tests
         {
             var expected = new List<KeyEventArgs>()
             {
-                new KeyEventArgs(Key.P, KeyAction.KeyDown),
-                new KeyEventArgs(Key.P, KeyAction.KeyUp)
+                new KeyEventArgs(Key.KeyP, KeyAction.KeyDown),
+                new KeyEventArgs(Key.KeyP, KeyAction.KeyUp)
             };
 
             var actual = new List<KeyEventArgs>();
