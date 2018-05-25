@@ -33,6 +33,9 @@
     <Reference Include="Autofac">
       <HintPath>..\packages\Autofac.4.8.1\lib\net45\Autofac.dll</HintPath>
     </Reference>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Caliburn.Micro">
       <HintPath>..\packages\Caliburn.Micro.Core.3.2.0\lib\net45\Caliburn.Micro.dll</HintPath>
     </Reference>
@@ -43,6 +46,12 @@
     <Compile Include="ViewModelsAutofacModule.cs" />
     <Compile Include="MainWindowViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KeyboardAPI\KeyboardAPI.csproj">
+      <Project>{382BDD2E-5E86-46B8-92F8-246C6B361EF6}</Project>
+      <Name>KeyboardAPI</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

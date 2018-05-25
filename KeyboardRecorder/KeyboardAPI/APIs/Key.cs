@@ -1,4 +1,4 @@
-namespace KeyboardAPI
+namespace KeyboardAPI.APIs
 {
     public enum Key
     {

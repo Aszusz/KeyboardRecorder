@@ -1,19 +1,21 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
+using System.Threading.Tasks;
 using KeyboardAPI;
+using KeyboardAPI.APIs;
 using NUnit.Framework;
 
 namespace Tests
 {
     [TestFixture]
-    public class SendingKeyToKeyboardShouldFireReceivedEvent
+    public class KeyboardApiTests
     {
         private IKeyboard _keyboard;
 
         [SetUp]
         public void SetUp()
         {
-            _keyboard = new Keyboard();
+            _keyboard = new Keyboard(Mapping.GetConfiguredMapper());
             _keyboard.Install();
         }
 
@@ -25,7 +27,7 @@ namespace Tests
         }
 
         [Test]
-        public void Test()
+        public void SendingKeyToKeyboardShouldFireReceivedEvent()
         {
             var expected = new List<KeyEventArgs>()
             {
@@ -43,9 +45,10 @@ namespace Tests
                 cde.Signal();
             };
 
+            Task.Delay(1000);
             _keyboard.Send(expected);
 
-            cde.Wait(500);
+            cde.Wait(5000);
             Assert.That(actual, Is.EquivalentTo(expected));
         }
     }

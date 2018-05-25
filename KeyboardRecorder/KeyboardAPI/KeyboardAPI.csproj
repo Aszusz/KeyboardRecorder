@@ -30,8 +30,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=4.8.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.8.1\lib\net45\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,7 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IKeyboard.cs" />
+    <Compile Include="APIs\IKeyboard.cs" />
     <Compile Include="Interops\Callbacks\KeyboardHookCallback.cs" />
     <Compile Include="Interops\Constants\WINDOW_MESSAGE.cs" />
     <Compile Include="Interops\Enums\INPUT_TYPE.cs" />
@@ -56,11 +65,16 @@
     <Compile Include="Interops\Structs\INPUT_UNION.cs" />
     <Compile Include="Interops\Structs\KEYBDINPUT.cs" />
     <Compile Include="Interops\Structs\MOUSEINPUT.cs" />
-    <Compile Include="Key.cs" />
-    <Compile Include="KeyAction.cs" />
-    <Compile Include="Keyboard.cs" />
-    <Compile Include="KeyEventArgs.cs" />
+    <Compile Include="APIs\Key.cs" />
+    <Compile Include="APIs\KeyAction.cs" />
+    <Compile Include="APIs\Keyboard.cs" />
+    <Compile Include="APIs\KeyEventArgs.cs" />
+    <Compile Include="KeyboardApiAutofacModule.cs" />
+    <Compile Include="Mapping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

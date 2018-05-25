@@ -1,4 +1,6 @@
-﻿namespace KeyboardAPI.Interops.Callbacks
+﻿using KeyboardAPI.APIs;
+
+namespace KeyboardAPI.Interops.Callbacks
 {
     public delegate void KeyboardHookCallback(Key key);
 }

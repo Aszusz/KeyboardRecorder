@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace KeyboardAPI
+namespace KeyboardAPI.APIs
 {
     public interface IKeyboard : IDisposable
     {

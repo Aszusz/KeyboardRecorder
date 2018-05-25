@@ -105,6 +105,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\KeyboardAPI\KeyboardAPI.csproj">
+      <Project>{382BDD2E-5E86-46B8-92F8-246C6B361EF6}</Project>
+      <Name>KeyboardAPI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ViewModels\ViewModels.csproj">
       <Project>{eb772bfb-5687-4a38-9ec3-d3e48e722b1d}</Project>
       <Name>ViewModels</Name>

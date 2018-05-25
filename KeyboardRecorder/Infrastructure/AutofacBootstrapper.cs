@@ -4,6 +4,7 @@ using System.Reflection;
 using System.Windows;
 using Autofac;
 using Caliburn.Micro;
+using KeyboardAPI;
 using ViewModels;
 using Views;
 
@@ -25,6 +26,7 @@ namespace Infrastructure
             builder.RegisterType<WindowManager>().As<IWindowManager>().SingleInstance();
             builder.RegisterType<EventAggregator>().As<IEventAggregator>().SingleInstance();
 
+            builder.RegisterAssemblyModules(typeof(KeyboardApiAutofacModule).Assembly);
             builder.RegisterAssemblyModules(typeof(ViewModelsAutofacModule).Assembly);
             builder.RegisterAssemblyModules(typeof(ViewsAutofacModule).Assembly);
 
@@ -54,7 +56,8 @@ namespace Infrastructure
             return new[]
             {
                 typeof(ViewModelsAutofacModule).Assembly,
-                typeof(ViewsAutofacModule).Assembly
+                typeof(ViewsAutofacModule).Assembly,
+                typeof(KeyboardApiAutofacModule).Assembly
             };
         }
     }
