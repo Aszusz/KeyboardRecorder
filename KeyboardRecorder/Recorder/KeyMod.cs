@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Recorder
+namespace KeyboardRecorder
 {
     [Flags]
     public enum KeyMod

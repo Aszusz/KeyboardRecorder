@@ -1,35 +1,18 @@
-﻿using System;
+﻿using AutoMapper;
 using Caliburn.Micro;
-using Recorder;
+using KeyboardRecorder.RecorderStateMachine;
+using ViewModels.States;
+using Recorder = KeyboardRecorder.RecorderStateMachine.Recorder;
 
 namespace ViewModels
 {
     public class MainWindowViewModel : PropertyChangedBase
     {
-        private readonly KeyCombinationListener _keyCombinationListener;
-        private string _title;
-
-        public MainWindowViewModel(string title, KeyCombinationListener keyCombinationListener)
+        public MainWindowViewModel()
         {
-            Title = title;
-            _keyCombinationListener = keyCombinationListener;
-            _keyCombinationListener.KeyCombinationReceived += KeyCombinationListenerOnKeyCombinationReceived;
-            _keyCombinationListener.Start();
-        }
+            
 
-        private void KeyCombinationListenerOnKeyCombinationReceived(KeyCombination keyCombination)
-        {
-        }
-
-        public string Title
-        {
-            get { return _title; }
-            set
-            {
-                if (value == _title) return;
-                _title = value;
-                NotifyOfPropertyChange(() => Title);
-            }
+            var r = Mapper.Map<RecorderViewModel>(new Recorder());
         }
     }
 }

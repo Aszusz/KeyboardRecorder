@@ -33,6 +33,10 @@
     <Reference Include="Autofac">
       <HintPath>..\packages\Autofac.4.8.1\lib\net45\Autofac.dll</HintPath>
     </Reference>
+    <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Caliburn.Micro">
       <HintPath>..\packages\Caliburn.Micro.Core.3.2.0\lib\net45\Caliburn.Micro.dll</HintPath>
     </Reference>
@@ -40,6 +44,11 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="States\IRecorderStateViewModel.cs" />
+    <Compile Include="States\PlayingViewModel.cs" />
+    <Compile Include="States\RecorderViewModel.cs" />
+    <Compile Include="States\RecordingViewModel.cs" />
+    <Compile Include="States\StoppedViewModel.cs" />
     <Compile Include="ViewModelsAutofacModule.cs" />
     <Compile Include="MainWindowViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -49,10 +58,13 @@
       <Project>{382BDD2E-5E86-46B8-92F8-246C6B361EF6}</Project>
       <Name>KeyboardAPI</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Recorder\Recorder.csproj">
+    <ProjectReference Include="..\Recorder\KeyboardRecorder.csproj">
       <Project>{D636D345-82C9-44BE-B697-A1CADC5A2289}</Project>
-      <Name>Recorder</Name>
+      <Name>KeyboardRecorder</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

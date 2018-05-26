@@ -1,7 +1,7 @@
 ﻿using System;
 using KeyboardAPI.APIs;
 
-namespace Recorder
+namespace KeyboardRecorder
 {
     public class KeyCombination : IEquatable<KeyCombination>
     {

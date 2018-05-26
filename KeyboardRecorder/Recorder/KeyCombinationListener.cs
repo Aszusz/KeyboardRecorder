@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using KeyboardAPI.APIs;
 
-namespace Recorder
+namespace KeyboardRecorder
 {
     public class KeyCombinationListener : IDisposable
     {

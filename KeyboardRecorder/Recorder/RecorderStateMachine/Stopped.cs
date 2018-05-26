@@ -1,6 +1,6 @@
-namespace Recorder.RecorderStateMachine
+namespace KeyboardRecorder.RecorderStateMachine
 {
-    internal class Stopped : IRecorderState
+    public class Stopped : IRecorderState
     {
     }
 }

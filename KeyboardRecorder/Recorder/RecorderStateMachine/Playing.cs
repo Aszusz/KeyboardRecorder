@@ -1,4 +1,4 @@
-namespace Recorder.RecorderStateMachine
+namespace KeyboardRecorder.RecorderStateMachine
 {
     public class Playing : IRecorderState
     {

@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Windows;
 using Autofac;
+using AutoMapper;
 using Caliburn.Micro;
-using Recorder;
+using KeyboardRecorder;
+using KeyboardRecorder.RecorderStateMachine;
 using ViewModels;
+using ViewModels.States;
 using Views;
 
 namespace Infrastructure
@@ -31,6 +34,21 @@ namespace Infrastructure
             builder.RegisterAssemblyModules(typeof(RecorderAutofacModule).Assembly);
 
             _container = builder.Build();
+
+            Mapper.Initialize(cfg =>
+            {
+                cfg.CreateMap<IRecorderState, IRecorderStateViewModel>()
+                    .Include<Playing, PlayingViewModel>()
+                    .Include<Recording, RecordingViewModel>()
+                    .Include<Stopped, StoppedViewModel>();
+
+                cfg.CreateMap<Playing, PlayingViewModel>();
+                cfg.CreateMap<Recording, RecordingViewModel>();
+                cfg.CreateMap<Stopped, StoppedViewModel>();
+
+                cfg.CreateMap<Recorder, RecorderViewModel>()
+                .ConstructUsing(recorder => new RecorderViewModel(recorder));
+            });
         }
 
         protected override object GetInstance(Type service, string key)

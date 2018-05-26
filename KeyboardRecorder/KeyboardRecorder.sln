@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyboardAPI", "KeyboardAPI\KeyboardAPI.csproj", "{382BDD2E-5E86-46B8-92F8-246C6B361EF6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recorder", "Recorder\Recorder.csproj", "{D636D345-82C9-44BE-B697-A1CADC5A2289}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyboardRecorder", "Recorder\KeyboardRecorder.csproj", "{D636D345-82C9-44BE-B697-A1CADC5A2289}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

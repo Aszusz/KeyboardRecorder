@@ -1,46 +1,56 @@
-﻿using Stateless;
+﻿using KeyboardAPI.APIs;
+using Stateless;
 
-namespace Recorder.RecorderStateMachine
+namespace KeyboardRecorder.RecorderStateMachine
 {
     public class Recorder : IRecorder
     {
-        private static readonly IRecorderState Stopped = new Stopped();
-        private static readonly IRecorderState Playing = new Playing();
-        private static readonly IRecorderState Recording = new Recording();
         private readonly StateMachine<IRecorderState, Trigger> _stateMachine;
 
         public Recorder()
         {
-            State = Stopped;
+            var keyboard = new Keyboard();
+            var listener = new KeyCombinationListener(keyboard);
+            var recording = new Recording(listener);
+            var playing = new Playing();
+            var stopped = new Stopped();
+
+            State = stopped;
 
             _stateMachine = new StateMachine<IRecorderState, Trigger>(
                 () => State,
                 state => { State = state; });
 
             _stateMachine
-                .Configure(Stopped)
-                .Permit(Trigger.Play, Playing)
-                .Permit(Trigger.Record, Recording);
+                .Configure(stopped)
+                .Permit(Trigger.Play, playing)
+                .Permit(Trigger.Record, recording);
 
             _stateMachine
-                .Configure(Recording)
-                .Permit(Trigger.Stop, Stopped);
+                .Configure(recording)
+                .OnEntry(() => recording.Start())
+                .OnExit(() => recording.Stop())
+                .Permit(Trigger.Stop, stopped);
 
             _stateMachine
-                .Configure(Playing)
-                .Permit(Trigger.Stop, Stopped);
+                .Configure(playing)
+                .Permit(Trigger.Stop, stopped);
         }
+
+        public bool CanPlay => _stateMachine.CanFire(Trigger.Play);
+        public bool CanRecord => _stateMachine.CanFire(Trigger.Record);
+        public bool CanStop => _stateMachine.CanFire(Trigger.Stop);
 
         public IRecorderState State { get; private set; }
-
-        public void Record()
-        {
-            _stateMachine.Fire(Trigger.Record);
-        }
 
         public void Play()
         {
             _stateMachine.Fire(Trigger.Play);
+        }
+
+        public void Record()
+        {
+            _stateMachine.Fire(Trigger.Record);
         }
 
         public void Stop()

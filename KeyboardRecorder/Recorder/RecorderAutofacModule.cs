@@ -1,7 +1,7 @@
 ﻿using Autofac;
 using KeyboardAPI.APIs;
 
-namespace Recorder
+namespace KeyboardRecorder
 {
     public class RecorderAutofacModule : Module
     {
