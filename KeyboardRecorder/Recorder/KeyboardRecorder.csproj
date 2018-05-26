@@ -55,6 +55,7 @@
     <Compile Include="KeyCombinationListener.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecorderAutofacModule.cs" />
+    <Compile Include="Script.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KeyboardAPI\KeyboardAPI.csproj">

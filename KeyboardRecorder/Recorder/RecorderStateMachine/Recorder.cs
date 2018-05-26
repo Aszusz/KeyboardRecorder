@@ -11,8 +11,9 @@ namespace KeyboardRecorder.RecorderStateMachine
         {
             var keyboard = new Keyboard();
             var listener = new KeyCombinationListener(keyboard);
-            var recording = new Recording(listener);
-            var playing = new Playing();
+            var script = new Script();
+            var recording = new Recording(listener, script);
+            var playing = new Playing(script);
             var stopped = new Stopped();
 
             State = stopped;
