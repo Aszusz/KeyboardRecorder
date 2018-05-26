@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using KeyboardAPI.APIs;
 
 namespace Recorder
@@ -66,13 +67,12 @@ namespace Recorder
 
             if (action == KeyAction.KeyUp && RegisteredKeys.IsRegisteredKey(key))
             {
-                var combination = new KeyCombination(
-                    _isLeftShiftDown || _isRightShiftDown,
-                    _isLeftControlDown || _isRightControlDown,
-                    _isLeftAltDown,
-                    _isRightAltDown,
-                    key);
+                var mod = _isLeftShiftDown || _isRightShiftDown ? KeyMod.Shift : 0;
+                mod |= _isLeftControlDown || _isRightControlDown ? KeyMod.Control : 0;
+                mod |= _isLeftAltDown ? KeyMod.LeftAlt : 0;
+                mod |= _isRightAltDown ? KeyMod.RightAlt : 0;
 
+                var combination = new KeyCombination(key, mod);
                 RaiseKeyCombinationReceived(combination);
             }
         }
@@ -88,6 +88,29 @@ namespace Recorder
         protected virtual void RaiseKeyCombinationReceived(KeyCombination obj)
         {
             KeyCombinationReceived?.Invoke(obj);
+        }
+
+        public void Send(KeyCombination combination)
+        {
+            var shift = combination.KeyMod.HasFlag(KeyMod.Shift);
+            var control = combination.KeyMod.HasFlag(KeyMod.Control);
+            var leftAlt = combination.KeyMod.HasFlag(KeyMod.LeftAlt);
+            var rightAlt = combination.KeyMod.HasFlag(KeyMod.RightAlt);
+
+            var sequence = new List<KeyEventArgs>();
+
+            if (shift) sequence.Add(new KeyEventArgs(Key.Shift, KeyAction.KeyDown));
+            if (control) sequence.Add(new KeyEventArgs(Key.Control, KeyAction.KeyDown));
+            if (leftAlt) sequence.Add(new KeyEventArgs(Key.LeftAlt, KeyAction.KeyDown));
+            if (rightAlt) sequence.Add(new KeyEventArgs(Key.RightAlt, KeyAction.KeyDown));
+            sequence.Add(new KeyEventArgs(combination.Key, KeyAction.KeyDown));
+            sequence.Add(new KeyEventArgs(combination.Key, KeyAction.KeyUp));
+            if (rightAlt) sequence.Add(new KeyEventArgs(Key.RightAlt, KeyAction.KeyUp));
+            if (leftAlt) sequence.Add(new KeyEventArgs(Key.LeftAlt, KeyAction.KeyUp));
+            if (control) sequence.Add(new KeyEventArgs(Key.Control, KeyAction.KeyUp));
+            if (shift) sequence.Add(new KeyEventArgs(Key.Shift, KeyAction.KeyUp));
+
+            _keyboard.Send(sequence);
         }
     }
 }

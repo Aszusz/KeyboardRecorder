@@ -39,6 +39,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="KeyCombination.cs" />
+    <Compile Include="KeyMod.cs" />
     <Compile Include="RegisteredKeys.cs" />
     <Compile Include="KeyCombinationListener.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
