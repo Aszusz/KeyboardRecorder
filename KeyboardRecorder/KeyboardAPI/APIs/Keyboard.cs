@@ -40,7 +40,8 @@ namespace KeyboardAPI.APIs
                             : 0,
                         wVk = _mapper.Map<Key, VIRTUAL_KEY_CODE>(arg.Key)
                     }
-                }
+                },
+                type = INPUT_TYPE.INPUT_KEYBOARD
             }).ToArray();
 
             var size = Marshal.SizeOf(inputs[0]);

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
-using System.Threading.Tasks;
 using KeyboardAPI.APIs;
 using NUnit.Framework;
 
@@ -44,10 +43,9 @@ namespace Tests
                 cde.Signal();
             };
 
-            Task.Delay(1000);
             _keyboard.Send(expected);
 
-            cde.Wait(5000);
+            cde.Wait(100);
             Assert.That(actual, Is.EquivalentTo(expected));
         }
     }
