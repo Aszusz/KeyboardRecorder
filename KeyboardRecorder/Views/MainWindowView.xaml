@@ -5,11 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:cal="http://www.caliburnproject.org"
         xmlns:viewModels1="clr-namespace:ViewModels;assembly=ViewModels"
+        xmlns:customControls="clr-namespace:Views.CustomControls"
         mc:Ignorable="d"
         Title="MainWindowView" Height="350" Width="525"
         d:DataContext="{d:DesignInstance Type=viewModels1:MainWindowViewModel, IsDesignTimeCreatable=False}"
         cal:Bind.AtDesignTime="True">
-    <Grid>
-        <TextBlock Text="{Binding Title}" FontSize="50" />
-    </Grid>
+    
+    <customControls:EzGrid Rows="100,*">
+        <customControls:EzGrid Columns="100,100,100,100">
+            
+        </customControls:EzGrid>
+    </customControls:EzGrid>
+    
 </Window>
