@@ -7,13 +7,16 @@
         xmlns:viewModels1="clr-namespace:ViewModels;assembly=ViewModels"
         xmlns:customControls="clr-namespace:Views.CustomControls"
         mc:Ignorable="d"
-        Title="MainWindowView" Height="350" Width="525"
+        Title="MainWindowView" MinHeight="300" MinWidth="400"
         d:DataContext="{d:DesignInstance Type=viewModels1:MainWindowViewModel, IsDesignTimeCreatable=False}"
         cal:Bind.AtDesignTime="True">
     
     <customControls:EzGrid Rows="100,*">
-        <customControls:EzGrid Columns="100,100,100,100">
-            
+        <customControls:EzGrid Grid.Row="0"  Columns="100,100,100,100">
+            <Button Grid.Column="0" Content="Reset"/>
+            <Button Grid.Column="1" Content="Record"/>
+            <Button Grid.Column="2" Content="Play"/>
+            <Button Grid.Column="3" Content="Stop"/>
         </customControls:EzGrid>
     </customControls:EzGrid>
     
