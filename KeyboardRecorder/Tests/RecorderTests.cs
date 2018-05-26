@@ -3,6 +3,7 @@ using System.Threading;
 using KeyboardAPI.APIs;
 using NUnit.Framework;
 using Recorder;
+using Recorder.RecorderStateMachine;
 
 namespace Tests
 {
@@ -20,7 +21,7 @@ namespace Tests
         }
 
         [Test]
-        public void Test()
+        public void SendingKeyCombinationShouldFireReceivedEvent()
         {
             var keyboard = new Keyboard();
             var listener = new KeyCombinationListener(keyboard);
@@ -53,21 +54,12 @@ namespace Tests
             Assert.That(actual, Is.EquivalentTo(expected));
         }
 
-        //[Test]
-        //public void Test()
-        //{
-        //    var keyboard = new Keyboard();
-        //    var recorder = new Recorder();
-
-        //    recorder.Record();
-        //    keyboard.Send(new[]
-        //    {
-        //        new KeyEventArgs(Key.KeyP, KeyAction.KeyDown),
-        //        new KeyEventArgs(Key.KeyP, KeyAction.KeyUp)
-        //    });
-
-        //    recorder.Play();
-
-        //}
+        [Test]
+        public void Test()
+        {
+            var recorder = new Recorder.RecorderStateMachine.Recorder();
+            recorder.Record();
+            Assert.That(recorder.State, Is.InstanceOf<Recording>());
+        }
     }
 }
