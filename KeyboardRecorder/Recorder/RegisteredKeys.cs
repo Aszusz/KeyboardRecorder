@@ -60,6 +60,23 @@ namespace KeyboardRecorder
             Key.NumPad9,
         };
 
+        private static readonly IEnumerable<Key> ModalKeys = new List<Key>()
+        {
+            Key.LeftCtrl,
+            Key.RightCtrl,
+            Key.LeftShift,
+            Key.RightShift,
+            Key.LeftAlt,
+            Key.RightAlt,
+            Key.LWin,
+            Key.RWin
+        };
+
+        public static bool IsModalKey(Key key)
+        {
+            return ModalKeys.Contains(key);
+        }
+
         public static bool IsRegisteredKey(Key key)
         {
             return Letters.Contains(key) || Numbers.Contains(key);

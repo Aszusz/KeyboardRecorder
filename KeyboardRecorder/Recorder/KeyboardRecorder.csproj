@@ -46,8 +46,11 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IKeyCombinationReceiver.cs" />
     <Compile Include="KeyCombination.cs" />
-    <Compile Include="KeyMod.cs" />
+    <Compile Include="KeyCombinationReceiver.cs" />
+    <Compile Include="KeyCombinationSender.cs" />
+    <Compile Include="KeyModifier.cs" />
     <Compile Include="RecorderStateMachine\IRecorder.cs" />
     <Compile Include="RecorderStateMachine\IRecorderState.cs" />
     <Compile Include="RecorderStateMachine\Playing.cs" />

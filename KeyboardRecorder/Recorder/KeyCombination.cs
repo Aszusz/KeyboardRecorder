@@ -5,15 +5,25 @@ namespace KeyboardRecorder
 {
     public class KeyCombination : IEquatable<KeyCombination>
     {
-        public KeyCombination(Key key, KeyMod mod = 0)
+        public KeyCombination(Key key, KeyModifier modifier = KeyModifier.None)
         {
-            KeyMod = mod;
+            KeyModifier = modifier;
             Key = key;
         }
 
         public Key Key { get; }
 
-        public KeyMod KeyMod { get; }
+        public KeyModifier KeyModifier { get; }
+
+        public static bool operator ==(KeyCombination left, KeyCombination right)
+        {
+            return Equals(left, right);
+        }
+
+        public static bool operator !=(KeyCombination left, KeyCombination right)
+        {
+            return !Equals(left, right);
+        }
 
         public bool Equals(KeyCombination other)
         {
@@ -26,8 +36,8 @@ namespace KeyboardRecorder
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != GetType()) return false;
-            return Equals((KeyCombination) obj);
+            return obj.GetType() == GetType()
+                   && Equals((KeyCombination) obj);
         }
 
         public override int GetHashCode()
@@ -35,14 +45,43 @@ namespace KeyboardRecorder
             return (int) Key;
         }
 
-        public static bool operator ==(KeyCombination left, KeyCombination right)
+        public override string ToString()
         {
-            return Equals(left, right);
-        }
-
-        public static bool operator !=(KeyCombination left, KeyCombination right)
-        {
-            return !Equals(left, right);
+            var s = "";
+            if (KeyModifier.HasFlag(KeyModifier.LCtrl))
+            {
+                s += KeyModifier.LCtrl + " + ";
+            }
+            if (KeyModifier.HasFlag(KeyModifier.RCtrl))
+            {
+                s += KeyModifier.RCtrl + " + ";
+            }
+            if (KeyModifier.HasFlag(KeyModifier.LShift))
+            {
+                s += KeyModifier.LShift + " + ";
+            }
+            if (KeyModifier.HasFlag(KeyModifier.RShift))
+            {
+                s += KeyModifier.RShift + " + ";
+            }
+            if (KeyModifier.HasFlag(KeyModifier.LAtl))
+            {
+                s += KeyModifier.LAtl + " + ";
+            }
+            if (KeyModifier.HasFlag(KeyModifier.RAlt))
+            {
+                s += KeyModifier.RAlt + " + ";
+            }
+            if (KeyModifier.HasFlag(KeyModifier.LWin))
+            {
+                s += KeyModifier.LWin + " + ";
+            }
+            if (KeyModifier.HasFlag(KeyModifier.RWin))
+            {
+                s += KeyModifier.RWin + " + ";
+            }
+            s += Key.ToString();
+            return s;
         }
     }
 }
