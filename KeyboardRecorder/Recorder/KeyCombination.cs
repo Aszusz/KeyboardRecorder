@@ -1,5 +1,5 @@
 ﻿using System;
-using KeyboardAPI.APIs;
+using System.Windows.Input;
 
 namespace KeyboardRecorder
 {

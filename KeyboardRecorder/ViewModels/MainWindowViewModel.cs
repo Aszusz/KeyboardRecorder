@@ -1,8 +1,6 @@
-﻿using AutoMapper;
+﻿using System.Windows.Input;
 using Caliburn.Micro;
-using KeyboardRecorder.RecorderStateMachine;
-using ViewModels.States;
-using Recorder = KeyboardRecorder.RecorderStateMachine.Recorder;
+using KeyboardToolkit.HotKeys;
 
 namespace ViewModels
 {
@@ -10,9 +8,13 @@ namespace ViewModels
     {
         public MainWindowViewModel()
         {
-            
+            var hotKey = HotKey.Create(Key.Left, ModifierKeys.None);
+            hotKey.Register();
+            hotKey.Pressed += HotKeyOnPressed;
+        }
 
-            var r = Mapper.Map<RecorderViewModel>(new Recorder());
+        private void HotKeyOnPressed()
+        {
         }
     }
 }

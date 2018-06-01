@@ -1,5 +1,4 @@
-﻿using KeyboardAPI.APIs;
-using Stateless;
+﻿using Stateless;
 
 namespace KeyboardRecorder.RecorderStateMachine
 {
@@ -9,10 +8,8 @@ namespace KeyboardRecorder.RecorderStateMachine
 
         public Recorder()
         {
-            var keyboard = new Keyboard();
-            var listener = new KeyCombinationListener(keyboard);
             var script = new Script();
-            var recording = new Recording(listener, script);
+            var recording = new Recording(script);
             var playing = new Playing(script);
             var stopped = new Stopped();
 

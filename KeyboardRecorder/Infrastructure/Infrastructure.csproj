@@ -101,10 +101,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\KeyboardAPI\KeyboardAPI.csproj">
-      <Project>{382BDD2E-5E86-46B8-92F8-246C6B361EF6}</Project>
-      <Name>KeyboardAPI</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Recorder\KeyboardRecorder.csproj">
       <Project>{D636D345-82C9-44BE-B697-A1CADC5A2289}</Project>
       <Name>KeyboardRecorder</Name>

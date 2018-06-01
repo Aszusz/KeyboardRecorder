@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading;
-using KeyboardAPI.APIs;
-using KeyboardRecorder;
-using KeyboardRecorder.RecorderStateMachine;
+﻿using KeyboardRecorder.RecorderStateMachine;
 using NUnit.Framework;
 
 namespace Tests
@@ -10,6 +6,11 @@ namespace Tests
     [TestFixture]
     public class RecorderTests
     {
+        [Test]
+        public void SendingKeyCombinationShouldFireReceivedEvent()
+        {
+        }
+
         [SetUp]
         public void SetUp()
         {
@@ -18,40 +19,6 @@ namespace Tests
         [TearDown]
         public void TearDown()
         {
-        }
-
-        [Test]
-        public void SendingKeyCombinationShouldFireReceivedEvent()
-        {
-            var keyboard = new Keyboard();
-            var listener = new KeyCombinationListener(keyboard);
-
-            var expected = new List<KeyCombination>
-            {
-                new KeyCombination(Key.KeyP),
-                new KeyCombination(Key.KeyP, KeyMod.Control | KeyMod.Shift)
-            };
-
-            var actual = new List<KeyCombination>();
-
-            var cde = new CountdownEvent(expected.Count);
-
-            listener.KeyCombinationReceived += combination =>
-            {
-                actual.Add(combination);
-                cde.Signal();
-            };
-
-            listener.Start();
-
-            foreach (var combination in expected)
-            {
-                listener.Send(combination);
-            }
-            
-            cde.Wait(100);
-            listener.Stop();
-            Assert.That(actual, Is.EquivalentTo(expected));
         }
 
         [Test]
